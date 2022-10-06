@@ -12,3 +12,6 @@ out/
 
 # Node
 node_modules/
+
+# editor files
+.vscode/
