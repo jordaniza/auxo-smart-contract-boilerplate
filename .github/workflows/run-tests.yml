@@ -1,9 +1,9 @@
-name: Forge Tests
+name: Run Tests
 
 on: [push, pull_request]
 
 jobs:
-  forge-tests:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,3 +21,10 @@ jobs:
 
       - name: Run forge tests
         run: forge test --ffi -vvv
+
+      - name: Run Slither
+        uses: crytic/slither-action@v0.2.0
+        id: slither
+        with:
+          target: "src/"
+          fail-on: medium
