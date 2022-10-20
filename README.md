@@ -40,6 +40,8 @@ A small `.editorconfig` file has been added that standardises things like line e
 
 We use import remappings to resolve import paths. Remappings should be prefixed with an `@` symbol and added to `remappings.txt`, in the format:
 
+> Note: ds-test is used internally by forge-std and so leave it as it is.
+
 ```
 @[shortcut]/=[original-path]/
 ```
