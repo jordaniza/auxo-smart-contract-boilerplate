@@ -13,13 +13,14 @@ You can install dependencies with the following command:
 ```sh
 forge build && yarn
 ```
+
 # CI
 
 Continuous integration is setup via [Github actions](./.github/workflows/run-tests.yml). The following checks are run:
 
-- Check Formatting has been run with `forge fmt`
-- Run the test suite with `forge test`
-- Check no 'high' or 'medium' priority vulnerabilities are left unaddressed in the static analyser
+-   Check Formatting has been run with `forge fmt`
+-   Run the test suite with `forge test`
+-   Check no 'high' or 'medium' priority vulnerabilities are left unaddressed in the static analyser
 
 # Conventions
 
@@ -45,6 +46,7 @@ We use import remappings to resolve import paths. Remappings should be prefixed 
 ```
 @[shortcut]/=[original-path]/
 ```
+
 For example:
 
 ```
@@ -66,6 +68,7 @@ Fetch coverage
 ```
 forge coverage
 ```
+
 # Static Analysis
 
 You can perform static analysis on your contracts using [Slither](https://github.com/crytic/slither). This will run a series of checks against known exploits and highlight where issues may be raised.
@@ -89,6 +92,7 @@ chmod +x analyze.sh
 # run the docker command
 ./analyze.sh
 ```
+
 The analyze script builds and runs the container before dropping you into a shell. You can run slither from there with the `slither` command. You may need to change the solidity compiler you are using, in which case run `solc-select` to get a list of options for installing and selecting specific compilers.
 
 ## Addressing issues
@@ -106,13 +110,15 @@ function potentiallyUnsafe(address _anywhere) external {
     ERC20(_anywhere).transfer(address(this), 1e19);
 }
 ```
+
 # Badges
 
 Edit the markdown in this section to customise badges here.
 
-[test-status]:https://github.com/jordaniza/auxo-smart-contract-boilerplate/actions/workflows/forge-test.yml/badge.svg
+[test-status]: https://github.com/AuxoDAO/foundry-template/actions/workflows/forge-test.yml/badge.svg
 
 # References
 
 Config Reference for Foundry:
-- https://book.getfoundry.sh/reference/config/
+
+-   https://book.getfoundry.sh/reference/config/
