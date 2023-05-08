@@ -3,19 +3,18 @@ Simple script to copy remappings file to slither config file
 '''
 import json
 
+# Get remappings from the remappings.txt file, removing any empty lines
 with open('./remappings.txt', 'r') as f:
     remappings: str = f.read()
+items: list[str] = [i for i in remappings.split('\n') if i != '']
 
-items: list[str] = remappings.split('\n')
-
-# truncate blank newline
-if items[-1] == '': items = items[:-1]
-
+# Grab the remappings saved slither config
 with open('./slither.config.json', 'r') as j:
     data = json.load(j)
+existing_slither_remappings = data.get('solc_remaps')
 
-existing_remappings = data.get('solc_remaps')
-if existing_remappings and items:
+# update the slither config to reflect remappings.txt
+if existing_slither_remappings and items:
     data['solc_remaps'] = items
     with open('./slither.config.json', 'w') as _of:
         _of.write(json.dumps(data, indent=4))
